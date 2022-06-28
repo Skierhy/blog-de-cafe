@@ -1,0 +1,385 @@
+/* mi pseudoclase que es para declara mis variables */
+:root {
+    /* variables para mi fuentes */
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuenteParrafos: 'Open Sans', sans-serif;
+    /* colores */
+    --primario: #784d3c;
+    --blanco: #ffffff;
+    --negro: #000000;
+    --gris: #e1e1e1;
+}
+
+/* aplicar un modelo de diseno de caja natural a todos los elementos, pero permitiendo que los componentes cambien */
+/* lo que hace es hacer mas sencillo el uso de box model */
+html {
+    box-sizing: border-box;
+    /* esto nos ayuda para que un rem sea 10px */
+    font-size: 62.5%;
+}
+
+/* la misma ayuda para el box model*/
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+/* selector */
+body {
+    /* fuente */
+    font-family: var(--fuenteParrafos);
+    /* tamano de letra */
+    font-size: 1.6rem;
+    /* es como el padding */
+    line-height: 2;
+}
+
+/* globales */
+a {
+    /* para quitar lo subrayado de los links */
+    text-decoration: none;
+}
+
+/* multiples selectores que sara esta fuente */
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--fuenteHeading);
+    line-height: 1.2;
+}
+
+/* tamano de letra */
+h1 {
+    font-size: 4.8rem;
+}
+
+h2 {
+    font-size: 4rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+h4 {
+    font-size: 2.8rem;
+}
+
+/* para la imagen puede tomar maximo el 100% */
+img {
+    max-width: 100%;
+}
+
+.contenedor {
+    /* tamano maximo que puede tener */
+    /* max-width: 120rem; */
+    /* porcentaje */
+    /* width: 90%; */
+
+    /* para acortar codigo  */
+    /* es lo mismo que arriba solamente es menos codigo */
+    /* recuerda no debe que esta separado el min con los parentesis */
+    width: min(90%, 120rem);
+    /* para centrar */
+    margin: 0 auto;
+}
+
+/* utilidades */
+/* para no tener margen */
+.no-margin {
+    margin: 0;
+}
+
+/* para no tener padding */
+.no-padding {
+    padding: 0;
+}
+
+/* centrar texto */
+.centrar-texto {
+    text-align: center;
+}
+
+/* header */
+/* esta parte lo que hace es decir si soporta webp entonces usara ese archivo
+como un tipo if
+es el uso de modernizr
+por que css no se puede usar picture */
+.webp .header {
+    background-image: url(../img/banner.webp);
+}
+.no-webp .header {
+    background-image: url(../img/banner.jpg);
+}
+.header {
+    /* se necesita dar un tamano para que se muestre */
+    height: 60rem;
+    /* para quitar la repeticion de las imagen */
+    /* este para que ocupe todo la pantalla */
+    background-size: cover;
+    /* este es para que no se repita */
+    background-repeat: no-repeat;
+    /* en esta parte es para que cuando cambie las dimensiones que la imagen se centre en un lugar */
+    /* por que dos center por que debes que centrala en el eje de la X y tambien de Y */
+    /* Primer center para eje de las x (horizontalmente) */
+    /* Segundo center es Y  para verticalmente*/
+    background-position: center center;
+}
+
+.header__texto {
+    text-align: center;
+    color: var(--blanco);
+    margin-top: 5rem;
+}
+
+@media (min-width: 768px) {
+    .header__texto {
+        margin-top: 15rem;
+    }
+}
+
+.barra {
+    padding-top: 4rem;
+}
+@media (min-width: 768px) {
+    .barra {
+        display: flex;
+        /* centrar horizontalmente */
+        justify-content: space-between;
+        /* centrado verticalmente */
+        align-items: center;
+    }
+}
+
+.logo {
+    color: var(--blanco);
+}
+
+.logo__nombre {
+    font-weight: normal;
+}
+
+.logo_bold {
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .navegacion {
+        /* cambian de block a flex para que ponga bien modo escritorio */
+        display: flex;
+        column-gap: 2rem;
+    }
+}
+
+.navegacion__enlace {
+    /* lo que hace que se ponga un elemento abajo de otro */
+    display: block;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--blanco);
+}
+
+@media (min-width: 768px) {
+    .contenido-principal {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 4rem;
+    }
+}
+
+.entrada {
+    /* primero el grosor
+    estilo
+    y por ultimo el color  */
+    border-bottom: 1px solid var(--gris);
+
+    margin-bottom: 2rem;
+}
+
+
+/* en la ultima no queremos el border ni el margin lo que hacemos es selecionarlo */
+
+.entrada:last-of-type {
+    border: none;
+    margin-bottom: 0;
+}
+
+.boton {
+    /* es para que en dispositivo tome todo el tamano */
+    /* toma todo el espacio disponible */
+    display: block;
+    font-family: var(--fuenteHeading);
+    color: var(--blanco);
+    text-align: center;
+    /* primero es arriba y abajo */
+    /* segundo derecha y izquierda */
+    /* se ponen por las manecillas de reloj */
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    border: none;
+}
+
+.boton:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .boton {
+        /* lo que hace inline es puede decir que toma el tamano que requieres para mostrate
+        inline-block lo que hace es dejame usar el margin y el width */
+        display: inline-block;
+    }
+}
+
+/* este es un modificador  */
+.boton--primario {
+    background-color: var(--negro);
+}
+/* el -- es cuando va heredar algo pero cosas cambiara */
+.boton--secundario {
+    background-color: var(--primario);
+}
+
+.cursos {
+    /* para quitar el estilo de la lista */
+    list-style: none;
+}
+
+.widget-curso {
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 2rem;
+}
+
+.widget-curso:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.widget-curso__label,
+.curso__label {
+    font-family: var(--fuenteHeading);
+    font-weight: bold;
+}
+
+.widget-curso__info,
+.curso__info {
+    font-weight: normal;
+}
+
+.widget-curso__label,
+.widget-curso__info,
+.curso__label,
+.curso__info {
+    font-size: 2rem;
+}
+
+.footer {
+    background-color: var(--negro);
+    padding-bottom: 3rem;
+    margin-top: 4rem;
+}
+
+/* sobre nosotros */
+/* .sobre-nosotros {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+} */
+
+@media (min-width: 768px) {
+    /* .sobre-nosotros {
+        display: flex;
+        column-gap: 2rem;
+        justify-content: space-between;
+    } */
+    /* factor de crecimiento */
+    /* por px */
+    /* .sobre-nosotros__imagen {
+        flex: 0 0 calc(50% - 1rem);
+    }
+
+    .sobre-nosotros__texto {
+        flex: 0 0 calc(50% - 1rem);
+    } */
+
+    /* si el gap o colum-gap no funciona
+        lo que hace es calcular el 50% y - 1rem 
+        cual va agarra para cada parte */
+    /* .sobre-nosotros__imagen,
+    .sobre-nosotros__texto {
+        flex-basis: calc(50% - 1rem);
+    }*/
+
+    .sobre-nosotros {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+        margin-bottom: 2rem ;
+    }
+}
+
+.curso {
+    padding: 3rem;
+    border-bottom: 1px solid var(--gris);
+}
+
+.curso:last-of-type{
+    border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .curso {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        column-gap: 2rem;
+    }
+}
+
+/* contacto */
+
+.contacto-bg {
+    background-image: url(../img/contacto.jpg);
+    /* para que se vea la imagen por que es un div vacio */
+    height: 40rem;
+    /* cover
+    Escala la imagen al mayor tamaño posible sin estirarla. Si las proporciones de la imagen difieren de las del elemento, es recortada vertical u horizontalmente para que no quede un espacio vacío. */
+    background-size: cover;
+    /* para no repetir la imagen */
+    background-repeat: no-repeat;
+}
+
+.formulario {
+    background-color: var(--blanco);
+    /* los margin aceptan valores negativos */
+    margin: -5rem auto 0 auto;
+    width: 95%;
+    padding: 5rem;
+}
+
+.campo {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.campo__label {
+    /* como en este su crecimiento es 0 y solamente tiene 9 rem solamente
+    ocupara ese tamano */
+    flex: 0 0 9rem;
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.campo__field {
+    /* este tomara todo espacio que quedo para vez el se hara mas grande */
+    flex: 1;
+    border: 1px solid var(--gris);
+}
+
+.campo__field--textarea {
+    height: 20rem;
+}
